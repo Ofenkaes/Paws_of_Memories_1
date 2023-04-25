@@ -12,13 +12,11 @@ Game::Player::Player(int playerX, int playerY) {
 
 void Game::Player::move() {
 
-    float xRim = 0;
-    float yRim = 0;
 
-    //grabbing commands implemented in the checks (destroy dirt/ grab memory from adjacent space)
+
     Vector2 check;
     framesCounter++;
-
+//grabbing commands implemented in the checks (destroy dirt/ grab memory from adjacent space)
     if (IsKeyDown(KEY_LEFT_CONTROL) || IsKeyDown(KEY_RIGHT_CONTROL)) {
         if (IsKeyDown(KEY_W)) {
             check.x = getPos().x;
@@ -39,24 +37,16 @@ void Game::Player::move() {
         }
     } else {//wasd commands; simple movement
         if (IsKeyDown(KEY_S)) {
-            pos_pl.y += 2.0f;
-            if (yRim < Game::ScreenHeight)
-                yRim = yRim + 15;
+            if (getPos().y +24< Game::ScreenHeight) pos_pl.y += 2.0f;
         }
         if (IsKeyDown(KEY_W)) {
-            pos_pl.y -= 2.0f;
-            if (yRim > 0)
-                yRim = yRim - 15;
+            if (getPos().y > 0) pos_pl.y -= 2.0f;
         }
         if (IsKeyDown(KEY_D)) {
-            pos_pl.x += 2.0f;
-            if (xRim < Game::ScreenWidth)
-                xRim = xRim + 15;
+            if (getPos().x +24 < Game::ScreenWidth) pos_pl.x += 2.0f;
         }
         if (IsKeyDown(KEY_A)) {
-            pos_pl.x -= 2.0f;
-            if (xRim > 0)
-                xRim = xRim - 15;
+            if (getPos().x > 0) pos_pl.x -= 2.0f;
         }
 
         //Animation
